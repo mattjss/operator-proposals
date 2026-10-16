@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<style>html,body{margin:0}</style>
+<title>Izzy&#39;s Website Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Operator proposal room. Uses Operator's palette, type and details (carbon ground, bone ink, olive chevron, ember used sparingly, zero radius, mono labels) without copying the marketing site. Operator light mode. Sections: intro, live preview, today vs new, working with Operator, pick. */
+:root {
+  /* Operator light: the same system turned to daylight. Carbon becomes the ink, bone becomes the paper, olive stays the mark, ember stays rare. */
+  --void: #e9e6dc; --base: #f4f2ec; --surface: #fbfaf6; --white: #fffefb;
+  --line: #dcd9cd; --line-2: #c8c5b7;
+  --bone: #1a1a17; --bone-dim: #3b3b34; --muted: #5f5e55; --faint: #737268;
+  --olive: #69705b; --olive-ink: #545a48; --ember: #e85d2a; --ember-ink: #b8461d; --ok: #2f7a4b;
+  --sans: "Geist", "Helvetica Neue", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --gx: clamp(20px, 5vw, 72px);
+  --hdr: 60px;
+  color-scheme: light;
+}
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { overflow-x: clip; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { background: var(--base); color: var(--bone-dim); font: 400 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+::selection { background: var(--olive); color: var(--white); }
+:focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; }
+.wrap { width: 100%; max-width: 1240px; margin-inline: auto; padding-inline: var(--gx); }
+.label { font: 500 11px/1.3 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+h1, h2, h3 { color: var(--bone); font-weight: 600; letter-spacing: -.028em; line-height: 1.06; text-wrap: balance; }
+h2 { font-size: clamp(28px, 4vw, 44px); }
+.sub { color: var(--muted); font-size: clamp(16px, 1.3vw, 18px); max-width: 52ch; text-wrap: pretty; }
+.sec { padding-block: clamp(64px, 9vw, 120px); border-top: 1px solid var(--line); }
+.sec-head { display: grid; gap: 12px; margin-bottom: clamp(28px, 4vw, 48px); }
+.idx { color: var(--ember-ink); }
+
+/* Header */
+.hdr { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; background: rgba(244, 242, 236, .86); backdrop-filter: blur(14px) saturate(120%); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.hdr .wrap { height: var(--hdr); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--bone); font: 600 15px/1 var(--sans); letter-spacing: .16em; }
+.brand svg { color: var(--olive); flex-shrink: 0; }
+.hdr-meta { display: flex; align-items: center; gap: 20px; }
+.hdr-for { display: none; }
+.hdr .hdr-pdf { display: none; }
+@media (min-width: 560px) { .hdr .hdr-pdf { display: inline-flex; } }
+@media (min-width: 820px) { .hdr-for { display: block; } }
+
+/* Buttons */
+.btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; font: 500 12px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--bone); white-space: nowrap; transition: transform .14s, background .14s, color .14s, border-color .14s; }
+.btn--primary { background: var(--bone); color: var(--base); }
+.btn--primary:hover { background: #33332d; }
+.btn--line { border: 1px solid var(--line-2); }
+.btn--line:hover { border-color: var(--ember); color: var(--ember-ink); }
+.btn--sm { min-height: 38px; padding: 0 16px; font-size: 11px; }
+.btn:active { transform: translateY(1px); }
+.btn[disabled] { opacity: .5; cursor: default; }
+
+/* Intro */
+.intro { padding-block: clamp(48px, 8vw, 104px) clamp(40px, 6vw, 72px); display: grid; gap: 24px; }
+.intro h1 { font-size: clamp(38px, 6.4vw, 76px); max-width: 15ch; }
+.intro h1 span { color: var(--muted); }
+.intro .sub { font-size: clamp(17px, 1.5vw, 20px); }
+.intro-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: clamp(16px, 3vw, 32px); border-top: 1px solid var(--line); }
+.facts div { padding: 16px 24px 0 0; display: grid; gap: 8px; }
+.facts b { color: var(--bone); font-weight: 500; font-size: 15px; }
+@media (max-width: 640px) {
+  .intro-actions .btn { flex: 1 1 100%; }
+  .facts { grid-template-columns: 1fr; }
+  .facts div { padding: 16px 0; border-bottom: 1px solid var(--line); grid-template-columns: 7.5rem 1fr; align-items: baseline; }
+}
+
+/* Preview */
+.picker { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--line); }
+.opt { text-align: left; padding: 24px; display: grid; gap: 8px; align-content: start; position: relative; transition: background .14s; min-width: 0; }
+.opt + .opt { border-left: 1px solid var(--line); }
+.opt:hover { background: var(--surface); }
+.opt::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: transparent; }
+.opt[aria-selected="true"] { background: var(--surface); }
+.opt[aria-selected="true"]::after { background: var(--ember); }
+.opt-top { display: flex; align-items: center; gap: 12px; }
+.opt b { color: var(--bone); font-weight: 600; font-size: 18px; letter-spacing: -.015em; }
+.opt small { color: var(--muted); font-size: 14px; line-height: 1.45; }
+.sw { display: inline-block; width: 22px; height: 12px; position: relative; overflow: hidden; flex-shrink: 0; }
+.sw::after { content: ""; position: absolute; inset: 0 0 0 55%; }
+.sw1 { background: #2347A6; } .sw1::after { background: #F0B23A; }
+.sw2 { background: #5C2329; } .sw2::after { background: #2A78B5; }
+.sw3 { background: #2F6670; } .sw3::after { background: #A4472B; }
+.swmix { background: linear-gradient(90deg, #2347A6 0.0% 33.3%, #5C2329 33.3% 66.7%, #2F6670 66.7% 100.0%); }
+.swmix::after { display: none; }
+
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-block: 16px; }
+.seg { display: inline-flex; border: 1px solid var(--line-2); }
+.seg button { min-height: 40px; padding: 0 16px; font: 500 11px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.seg button + button { border-left: 1px solid var(--line-2); }
+.seg button[aria-pressed="true"] { background: var(--bone); color: var(--base); }
+.open { font: 500 11px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--bone-dim); padding: 12px 0; border-bottom: 1px solid var(--line-2); }
+.open:hover { color: var(--ember-ink); border-color: var(--ember); }
+
+.stage { background: var(--void); border: 1px solid var(--line); padding: clamp(12px, 2.4vw, 32px); display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; }
+.browser { width: 100%; border: 1px solid var(--line-2); background: var(--surface); box-shadow: 0 32px 64px -36px rgba(26, 26, 23, .35); }
+.chrome { display: flex; align-items: center; gap: 12px; padding: 8px 12px; border-bottom: 1px solid var(--line-2); }
+.dots { display: flex; gap: 6px; } .dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--line-2); }
+.url { flex: 1; min-width: 0; font: 500 11px/1 var(--mono); letter-spacing: .04em; color: var(--muted); background: var(--base); padding: 8px 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.viewport { position: relative; width: 100%; overflow: hidden; background: #fff; }
+.viewport iframe { display: block; border: 0; background: #fff; transform-origin: 0 0; }
+.phone { width: 390px; max-width: 100%; border-radius: 40px; border: 10px solid #050504; background: #050504; overflow: hidden; box-shadow: 0 0 0 1px #2a2a24, 0 32px 64px -32px rgba(26, 26, 23, .45); }
+.phone iframe { display: block; width: 100%; height: min(78vh, 800px); border: 0; border-radius: 30px; background: #fff; }
+.trio { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.trio figure { display: grid; gap: 12px; justify-items: center; min-width: 0; }
+.trio figcaption { color: var(--muted); font-size: 14px; display: flex; gap: 8px; align-items: center; }
+.trio .phone iframe { height: 660px; }
+.note { margin-top: 16px; font-size: 14px; line-height: 1.9; color: var(--muted); }
+.tagdemo { display: inline-block; font: 600 12px/1.3 var(--sans); color: #8A5A00; background: #FFF4D6; border: 1.5px dashed #8A5A00; padding: 4px 10px; margin-right: 8px; vertical-align: 1px; }
+
+.about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 28px clamp(32px, 6vw, 96px); margin-top: clamp(32px, 5vw, 56px); }
+@media (max-width: 860px) { .about { grid-template-columns: 1fr; } }
+.about h3 { font-size: clamp(22px, 2.4vw, 30px); margin-top: 8px; }
+.about .why { color: var(--muted); margin-top: 12px; max-width: 48ch; }
+.about ul { border-top: 1px solid var(--line); }
+.about li { padding: 12px 0 12px 24px; border-bottom: 1px solid var(--line); position: relative; }
+.about li::before { content: ""; position: absolute; left: 2px; top: 22px; width: 6px; height: 6px; background: var(--olive); }
+
+/* Today vs new */
+.vs { border: 1px solid var(--line); }
+.vs-row { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1fr) minmax(0, 1fr); }
+.vs-row + .vs-row { border-top: 1px solid var(--line); }
+.vs-row > * { padding: 20px 24px; min-width: 0; }
+.vs-row > * + * { border-left: 1px solid var(--line); }
+.vs-head > * { padding-block: 16px; background: var(--surface); }
+.vs-row h3 { font-size: 16px; letter-spacing: -.01em; line-height: 1.35; }
+.cell { display: grid; grid-template-columns: 16px 1fr; gap: 12px; font-size: 15px; line-height: 1.5; }
+.cell svg { margin-top: 4px; }
+.today { color: var(--muted); }
+.today svg { color: var(--ember); }
+.new { color: var(--bone); }
+.new svg { color: var(--ok); }
+.vs-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; margin-top: 16px; color: var(--muted); font-size: 14px; }
+.vs-foot a { color: var(--bone-dim); border-bottom: 1px solid var(--line-2); padding-block: 8px; }
+.vs-foot a:hover { color: var(--ember-ink); border-color: var(--ember); }
+@media (max-width: 760px) {
+  .vs { border: 0; display: grid; gap: 12px; }
+  .vs-head { display: none; }
+  .vs-row { grid-template-columns: 1fr; border: 1px solid var(--line); }
+  .vs-row + .vs-row { border-top: 1px solid var(--line); }
+  .vs-row > * { padding: 16px 20px; }
+  .vs-row > * + * { border-left: 0; border-top: 1px solid var(--line); }
+  .vs-row h3 { background: var(--surface); }
+  .cell::before { content: attr(data-k); grid-column: 1 / -1; font: 500 10px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--faint); margin-bottom: 4px; }
+}
+
+/* Working with Operator */
+.op { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); border: 1px solid var(--line); }
+.op > div { padding: clamp(20px, 3vw, 32px); display: grid; gap: 16px; align-content: start; min-width: 0; }
+.op > div + div { border-left: 1px solid var(--line); }
+.op h3 { font-size: 20px; letter-spacing: -.015em; }
+.steps { counter-reset: s; border-top: 1px solid var(--line); }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 40px 1fr; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.steps li::before { content: counter(s, decimal-leading-zero); font: 500 12px/1.9 var(--mono); color: var(--ember-ink); }
+.steps b { color: var(--bone); font-weight: 500; }
+.incl { border-top: 1px solid var(--line); }
+.incl li { padding: 12px 0 12px 24px; border-bottom: 1px solid var(--line); position: relative; }
+.incl li::before { content: ""; position: absolute; left: 2px; top: 22px; width: 6px; height: 6px; background: var(--olive); }
+.fill { font: 500 13px/1.5 var(--mono); color: #9a3c16; border: 1px dashed rgba(232, 93, 42, .5); background: rgba(232, 93, 42, .06); padding: 12px 16px; }
+@media (max-width: 860px) { .op { grid-template-columns: 1fr; } .op > div + div { border-left: 0; border-top: 1px solid var(--line); } }
+
+/* Care plan */
+.care { margin-top: clamp(24px, 3vw, 40px); border: 1px solid var(--line); display: grid; grid-template-columns: 1fr; }
+.care-head { padding: clamp(20px, 3vw, 32px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); column-gap: 32px; row-gap: 12px; align-items: start; border-bottom: 1px solid var(--line); }
+.care-head .label { grid-column: 1 / -1; }
+@media (max-width: 800px) { .care-head { grid-template-columns: 1fr; } }
+.care-head h3 { font-size: 20px; letter-spacing: -.015em; }
+.care-head .sub { font-size: 15px; }
+.care-tiers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.care-tiers li { padding: clamp(20px, 3vw, 32px); display: grid; gap: 8px; align-content: start; min-width: 0; }
+.care-tiers li + li { border-left: 1px solid var(--line); }
+.care-tiers b { color: var(--bone); font-weight: 600; font-size: 22px; line-height: 1.25; letter-spacing: -.02em; text-wrap: balance; }
+.care-tiers li:nth-child(2) b { color: var(--ok); }
+.care-tiers li.build { background: var(--white); }
+.care-tiers li.build b { color: var(--ember-ink); }
+.care-tiers b s { color: var(--muted); font-weight: 400; font-size: .7em; margin-right: 6px; text-decoration-thickness: 1px; }
+.offer { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; padding: 14px clamp(20px, 3vw, 32px); background: var(--ember-ink); color: #fff; font-size: 15px; line-height: 1.5; }
+.offer .label { color: #fff; opacity: .85; }
+.care-tiers p { font-size: 15px; line-height: 1.55; color: var(--muted); }
+.care-foot { grid-column: 1 / -1; padding: 16px clamp(20px, 3vw, 32px); border-top: 1px solid var(--line); font-size: 14px; line-height: 1.55; color: var(--muted); }
+@media (max-width: 1000px) { .care-tiers { grid-template-columns: repeat(2, minmax(0, 1fr)); } .care-tiers li:nth-child(3) { border-left: 0; } .care-tiers li:nth-child(n+3) { border-top: 1px solid var(--line); } }
+@media (max-width: 640px) { .care-tiers { grid-template-columns: 1fr; } .care-tiers li + li { border-left: 0; border-top: 1px solid var(--line); } }
+
+/* Why Operator */
+.vp { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); margin-bottom: clamp(32px, 4vw, 48px); }
+.vp li { padding: clamp(20px, 2.4vw, 28px); display: grid; gap: 8px; align-content: start; min-width: 0; border-left: 1px solid var(--line); }
+.vp li:nth-child(4n+1) { border-left: 0; }
+.vp li:nth-child(n+5) { border-top: 1px solid var(--line); }
+.vp-i { font: 500 11px/1 var(--mono); color: var(--ember-ink); letter-spacing: .08em; }
+.vp h3 { font-size: 17px; letter-spacing: -.015em; line-height: 1.25; margin-top: 4px; }
+.vp p { font-size: 15px; line-height: 1.55; color: var(--muted); }
+.vs--cmp .vs-row { grid-template-columns: minmax(0, .6fr) minmax(0, 1fr) minmax(0, 1fr); }
+@media (max-width: 1000px) { .vp { grid-template-columns: repeat(2, minmax(0, 1fr)); } .vp li:nth-child(4n+1) { border-left: 1px solid var(--line); } .vp li:nth-child(odd) { border-left: 0; } .vp li:nth-child(n+3) { border-top: 1px solid var(--line); } }
+@media (max-width: 560px) { .vp { grid-template-columns: 1fr; } .vp li { border-left: 0 !important; } .vp li:nth-child(n+2) { border-top: 1px solid var(--line); } }
+@media (max-width: 760px) { .vs--cmp .vs-row { grid-template-columns: 1fr; } }
+/* Why */
+.why3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--line); }
+.why3 > div { padding: clamp(20px, 2.6vw, 32px); display: grid; gap: 16px; align-content: start; min-width: 0; }
+.why3 > div + div { border-left: 1px solid var(--line); }
+.why3 h3 { font-size: 19px; letter-spacing: -.015em; }
+.why3 ul { border-top: 1px solid var(--line); }
+.why3 li { padding: 12px 0 12px 24px; border-bottom: 1px solid var(--line); position: relative; font-size: 15px; }
+.why3 li::before { content: ""; position: absolute; left: 2px; top: 21px; width: 6px; height: 6px; background: var(--olive); }
+@media (max-width: 900px) { .why3 { grid-template-columns: 1fr; } .why3 > div + div { border-left: 0; border-top: 1px solid var(--line); } }
+
+/* Pick */
+.pick { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 32px clamp(32px, 6vw, 96px); }
+@media (max-width: 860px) { .pick { grid-template-columns: 1fr; } }
+.pick .side { display: grid; gap: 16px; align-content: start; }
+.contact { margin-top: 8px; padding-top: 16px; border-top: 1px solid var(--line); display: grid; gap: 8px; }
+.contact span:last-child { font: 400 15px/1.55 var(--sans); color: var(--bone-dim); max-width: 40ch; }
+form { display: grid; gap: 24px; }
+fieldset { border: 0; padding: 0; margin: 0; min-width: 0; position: relative; display: grid; }
+legend { padding: 0; margin-bottom: 12px; }
+.choice-in { position: absolute; left: 0; top: 0; opacity: 0; width: 1px; height: 1px; }
+.choice { display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center; min-height: 64px; padding: 12px 20px; border: 1px solid var(--line); cursor: pointer; transition: background .14s, border-color .14s; }
+.choice ~ .choice { margin-top: -1px; }
+.choice:hover { background: var(--surface); }
+.choice b { display: block; color: var(--bone); font-weight: 500; }
+.choice small { color: var(--muted); font-size: 14px; }
+.choice::after { content: ""; width: 18px; height: 18px; border: 1px solid var(--faint); border-radius: 50%; }
+.choice-in:checked + .choice { background: var(--surface); border-color: var(--ember); position: relative; z-index: 1; }
+.choice-in:checked + .choice::after { border-color: var(--ember); background: var(--ember); box-shadow: inset 0 0 0 4px var(--surface); }
+.choice-in:focus-visible + .choice { outline: 2px solid var(--ember); outline-offset: 2px; }
+.who { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.field { display: grid; gap: 12px; min-width: 0; } .field--full, .who .hint { grid-column: 1 / -1; }
+.who .hint { font-size: 14px; color: var(--faint); margin-top: -4px; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.field input { width: 100%; min-height: 48px; font: 400 16px/1.4 var(--sans); color: var(--bone); background: var(--white); border: 1px solid var(--line-2); border-radius: 0; padding: 12px 16px; }
+.field input:focus { outline: none; border-color: var(--olive); }
+.field input[aria-invalid="true"] { border-color: var(--ember); }
+@media (max-width: 560px) { .who { grid-template-columns: 1fr; } }
+textarea { width: 100%; min-height: 112px; font: 400 16px/1.55 var(--sans); color: var(--bone); background: var(--white); border: 1px solid var(--line-2); border-radius: 0; padding: 14px 16px; resize: vertical; }
+textarea::placeholder { color: var(--faint); }
+textarea:focus { outline: none; border-color: var(--olive); }
+.form-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
+.status { font-size: 15px; color: var(--muted); }
+.status.ok { color: var(--ok); }
+@media (max-width: 640px) { .form-foot .btn { flex: 1 1 100%; } }
+
+/* Footer */
+.foot { border-top: 1px solid var(--line); background: var(--void); padding-block: 32px; }
+.foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px 24px; color: var(--faint); font-size: 14px; }
+
+/* Phone: the preview becomes the screen, with a version dock under the thumb */
+.dock { display: none; }
+@media (max-width: 760px) {
+  :root { --hdr: 56px; }
+  .sec { padding-block: 56px; }
+  .picker { display: none; }
+  .preview-wrap { padding-inline: 0; }
+  .toolbar { padding: 12px var(--gx); }
+  .seg button[data-v="trio"] { display: none; }
+  .stage { border-inline: 0; padding: 0; }
+  .stage .phone { width: 100%; border: 0; border-radius: 0; box-shadow: none; background: transparent; }
+  .stage .phone iframe { border-radius: 0; height: calc(100svh - var(--hdr) - 64px - 80px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)); min-height: 460px; }
+  .browser { border-inline: 0; box-shadow: none; }
+  .note, .about { padding-inline: var(--gx); }
+  .dock { display: grid; position: fixed; z-index: 45; left: 0; right: 0; bottom: 0; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)); background: rgba(244, 242, 236, .94); backdrop-filter: blur(14px) saturate(120%); -webkit-backdrop-filter: blur(14px); border-top: 1px solid var(--line); transform: translateY(110%); visibility: hidden; transition: transform .28s cubic-bezier(.22, .8, .24, 1), visibility 0s .28s; }
+  .dock.on { transform: none; visibility: visible; transition: transform .28s cubic-bezier(.22, .8, .24, 1); }
+  .dock button { min-height: 60px; display: grid; justify-items: center; align-content: center; gap: 8px; border: 1px solid var(--line); background: var(--base); padding: 8px; }
+  .dock button span:last-child { font-size: 13px; font-weight: 500; color: var(--muted); line-height: 1.1; }
+  .dock button[aria-selected="true"] { border-color: var(--ember); background: var(--surface); }
+  .dock button[aria-selected="true"] span:last-child { color: var(--bone); }
+  .foot { padding-bottom: calc(32px + env(safe-area-inset-bottom, 0px)); }
+}
+/* Full screen preview: an in-page layer, so it works inside the artifact viewer on every device */
+.full { position: fixed; inset: 0; z-index: 100; background: var(--void); display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); padding-top: env(safe-area-inset-top, 0px); }
+.full-bar { min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 12px; border-bottom: 1px solid var(--line); background: var(--void); }
+.full-tabs { display: flex; gap: 8px; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+.full-tabs::-webkit-scrollbar { display: none; }
+.full-tabs button { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border: 1px solid var(--line); color: var(--muted); font-size: 14px; font-weight: 500; white-space: nowrap; }
+.full-tabs button[aria-selected="true"] { border-color: var(--ember); color: var(--bone); background: var(--surface); }
+.full-close { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border: 1px solid var(--line-2); font: 500 11px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--bone); flex-shrink: 0; }
+.full-close:hover { border-color: var(--ember); color: var(--ember-ink); }
+.full iframe { display: block; width: 100%; height: 100%; border: 0; background: #fff; }
+body.full-on { overflow: hidden; }
+@media (max-width: 560px) { .full-tabs { flex: 1; overflow: visible; } .full-tabs button { flex: 1 1 0; min-width: 0; justify-content: center; text-align: center; white-space: normal; line-height: 1.15; padding: 4px 8px; font-size: 13px; } .full-tabs .sw { display: none; } .full-close { width: 44px; padding: 0; justify-content: center; } .full-close span { display: none; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body><header class="hdr">
+  <div class="wrap">
+    <span class="brand" aria-label="Operator"><svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><path d="M9 5 L23.5 16 L9 27 L9 20.4 L14.6 16 L9 11.6 Z" fill="currentColor"/></svg>OPERATOR</span>
+    <div class="hdr-meta">
+      <span class="label hdr-for">For Izzy&#39;s Plumbing &amp; Heating · October 2026</span>
+      <a class="btn btn--line btn--sm hdr-pdf" href="/izzys/Izzy-s-Plumbing-Heating-Website-Proposal.pdf" target="_blank" rel="noopener">Proposal PDF</a>
+      <a class="btn btn--line btn--sm" href="#pick">Choose</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="wrap intro" aria-labelledby="h1">
+    <p class="label">Website redesign for Izzy&#39;s Plumbing &amp; Heating</p>
+    <h1 id="h1">One licensed call for Middlesex and Somerset. <span>A website that books the job and shows the work behind it.</span></h1>
+    <p class="sub">We rebuilt izzysplumbing.com three ways, from your own services, licenses, job photos and Google reviews. Each one is a working site. Try them on your phone or computer, then tell us which feels most like Izzy&#39;s.</p>
+    <div class="intro-actions">
+      <a class="btn btn--primary" href="#preview">Try the three versions</a>
+      <a class="btn btn--line" href="/izzys/Izzy-s-Plumbing-Heating-Website-Proposal.pdf" target="_blank" rel="noopener">Read the proposal</a>
+    </div>
+    <dl class="facts">
+      <div><dt class="label">Prepared for</dt><dd><b>Izzy Moalam</b></dd></div>
+      <div><dt class="label">Prepared by</dt><dd><b>Operator</b></dd></div>
+      <div><dt class="label">What's here</dt><dd><b>3 working sites to compare</b></dd></div>
+    </dl>
+  </section>
+
+  <section class="sec" id="preview" aria-labelledby="pv-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label"><span class="idx">01</span> · Preview</p>
+        <h2 id="pv-h">Three versions. All working.</h2>
+        <p class="sub">Each one speaks first to a different customer. Scroll, tap the buttons, try the forms.</p>
+      </div>
+      <div class="picker" role="tablist" aria-label="Versions">
+        <button class="opt" role="tab" id="t-service" aria-selected="true" aria-controls="viewer" data-k="service"><span class="opt-top"><span class="sw sw1" aria-hidden="true"></span><b>Service</b></span><small>Plumbing, drains, heating and cooling, one call</small></button>
+        <button class="opt" role="tab" id="t-replacement" aria-selected="false" aria-controls="viewer" data-k="replacement"><span class="opt-top"><span class="sw sw2" aria-hidden="true"></span><b>Replacement</b></span><small>Navien, boilers and full system installs</small></button>
+        <button class="opt" role="tab" id="t-family" aria-selected="false" aria-controls="viewer" data-k="family"><span class="opt-top"><span class="sw sw3" aria-hidden="true"></span><b>Family</b></span><small>Family-owned in Middlesex since 2006</small></button>
+      </div>
+    </div>
+    <div class="wrap preview-wrap">
+      <div class="toolbar">
+        <div class="seg" role="group" aria-label="View as">
+          <button type="button" data-v="phone" aria-pressed="false">Phone</button>
+          <button type="button" data-v="desk" aria-pressed="true">Computer</button>
+          <button type="button" data-v="trio" aria-pressed="false">All three</button>
+        </div>
+        <button type="button" class="open" id="open">Open full screen ↗</button>
+      </div>
+      <div class="stage" id="viewer" role="tabpanel" aria-labelledby="t-service">
+        <div class="browser" id="desk"><div class="chrome"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="url">izzysplumbing.com</div></div><div class="viewport" id="vp"><iframe id="f-desk" title="Service, computer view"></iframe></div></div>
+        <div class="phone" id="phone" hidden><iframe id="f-phone" title="Phone view"></iframe></div>
+        <div class="trio" id="trio" hidden>
+          <figure><figcaption><span class="sw sw1" aria-hidden="true"></span>Service</figcaption><div class="phone"><iframe title="Service on a phone" data-src="/izzys/concepts/service.html"></iframe></div></figure>
+          <figure><figcaption><span class="sw sw2" aria-hidden="true"></span>Replacement</figcaption><div class="phone"><iframe title="Replacement on a phone" data-src="/izzys/concepts/replacement.html"></iframe></div></figure>
+          <figure><figcaption><span class="sw sw3" aria-hidden="true"></span>Family</figcaption><div class="phone"><iframe title="Family on a phone" data-src="/izzys/concepts/family.html"></iframe></div></figure>
+        </div>
+      </div>
+      <p class="note"><span class="tagdemo">Dashed yellow tags</span> mark details like your 877 number, after-hours policy, Google rating, maintenance plan terms and warranties. We fill those in with you. Forms work but don't send yet.</p>
+      <div class="about" aria-live="polite">
+        <div><p class="label" id="d-k">Version 1 of 3</p><h3 id="d-h">Service</h3><p class="why" id="d-why"></p></div>
+        <ul id="d-list"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="today" aria-labelledby="vs-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label"><span class="idx">02</span> · Today vs. new</p>
+        <h2 id="vs-h">What your customers get that they don't today.</h2>
+        <p class="sub">We went through every page of the current site. All three versions fix these.</p>
+      </div>
+      <div class="vs" role="table" aria-label="Today's site compared with the new site">
+        <div class="vs-row vs-head" role="row"><span class="label" role="columnheader">For the customer</span><span class="label" role="columnheader">Today's site</span><span class="label" role="columnheader">New site</span></div>
+        <div class="vs-row" role="row"><h3 role="rowheader">Calling the right number</h3><p class="cell today" role="cell" data-k="Today"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="1.6"/></svg><span>877-FOR-IZZY on the page, but every link dials (732) 452-9600, and one page shows 877-452-9600.</span></p><p class="cell new" role="cell" data-k="New"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="1.6" fill="none"/></svg><span>One number everywhere, tap to call or text.</span></p></div>
+        <div class="vs-row" role="row"><h3 role="rowheader">Knowing when you can get help</h3><p class="cell today" role="cell" data-k="Today"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="1.6"/></svg><span>24/7 on the AC and drain pages, but posted hours say Saturday emergency only and Sunday closed.</span></p><p class="cell new" role="cell" data-k="New"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="1.6" fill="none"/></svg><span>One clear hours and emergency policy on every page.</span></p></div>
+        <div class="vs-row" role="row"><h3 role="rowheader">Sending a request</h3><p class="cell today" role="cell" data-k="Today"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="1.6"/></svg><span>The contact page says to fill out a form, but no form appears.</span></p><p class="cell new" role="cell" data-k="New"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="1.6" fill="none"/></svg><span>A short request that works on every version, with a review step.</span></p></div>
+        <div class="vs-row" role="row"><h3 role="rowheader">Seeing your real work</h3><p class="cell today" role="cell" data-k="Today"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="1.6"/></svg><span>Stock photos on the service pages while 18 real job photos sit in the gallery.</span></p><p class="cell new" role="cell" data-k="New"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="1.6" fill="none"/></svg><span>Your own jobs, crew, trucks and shop on every service.</span></p></div>
+        <div class="vs-row" role="row"><h3 role="rowheader">Finding you on Google and AI</h3><p class="cell today" role="cell" data-k="Today"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="1.6"/></svg><span>No structured data, mixed-up page addresses, missing image descriptions and a placeholder email link.</span></p><p class="cell new" role="cell" data-k="New"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="1.6" fill="none"/></svg><span>Services, towns, licenses and FAQ marked up so search and AI assistants can recommend you.</span></p></div>
+      </div>
+      <div class="vs-foot"><span>Compare for yourself.</span><a href="https://www.izzysplumbing.com/" target="_blank" rel="noopener">Open today's site ↗</a></div>
+    </div>
+  </section>
+
+  <section class="sec" id="why" aria-labelledby="why-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label"><span class="idx">03</span> · Why Operator</p>
+        <h2 id="why-h">Not another template site.</h2>
+        <p class="sub">Most small-business sites are page-builder templates an agency sets up and leaves. Every Operator site is designed and coded for one business, and built for how customers search now.</p>
+      </div>
+      <ul class="vp"><li><span class="vp-i">01</span><h3>Custom design</h3><p>Designed for Izzy&#39;s from your trade, your customers and your history. Not a template another contractor also uses.</p></li><li><span class="vp-i">02</span><h3>Custom code</h3><p>Hand-built, lightweight pages. No page builder, no plugins to keep patched, nothing slowing the site down.</p></li><li><span class="vp-i">03</span><h3>Built for AI search</h3><p>Structured business facts, quotable answers and open access for AI crawlers, so AI assistants can read Izzy&#39;s’s services and service area accurately.</p></li><li><span class="vp-i">04</span><h3>Better SEO</h3><p>Fast pages, real headings, and service and town content laid out the way Google reads local businesses.</p></li><li><span class="vp-i">05</span><h3>Clear information architecture</h3><p>Organized around the customer’s problem, so people reach the right service in a tap instead of hunting through menus.</p></li><li><span class="vp-i">06</span><h3>Modern UI for 2027 and beyond</h3><p>A phone-first interface with the polish customers expect from the apps they use every day.</p></li><li><span class="vp-i">07</span><h3>Stronger branding</h3><p>One consistent Izzy&#39;s story, look and voice on every page, from the first screen to the request form.</p></li><li><span class="vp-i">08</span><h3>Leads that arrive complete</h3><p>Request forms that deliver a name, number and the problem to your office, every time.</p></li></ul>
+      <div class="vs vs--cmp" role="table" aria-label="A typical agency template site compared with an Operator site"><div class="vs-row vs-head" role="row"><span class="label" role="columnheader">What you get</span><span class="label" role="columnheader">Typical agency template site</span><span class="label" role="columnheader">Operator</span></div><div class="vs-row" role="row"><h3 role="rowheader">Design</h3><p class="cell today" role="cell" data-k="Typical agency site"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="1.6"/></svg><span>A template shared with other businesses</span></p><p class="cell new" role="cell" data-k="Operator"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="1.6" fill="none"/></svg><span>Designed for Izzy&#39;s alone</span></p></div><div class="vs-row" role="row"><h3 role="rowheader">Build</h3><p class="cell today" role="cell" data-k="Typical agency site"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="1.6"/></svg><span>A CMS page builder stacked with plugins</span></p><p class="cell new" role="cell" data-k="Operator"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="1.6" fill="none"/></svg><span>Custom code, nothing extra to load</span></p></div><div class="vs-row" role="row"><h3 role="rowheader">Speed</h3><p class="cell today" role="cell" data-k="Typical agency site"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="1.6"/></svg><span>Heavy scripts that drag on a phone</span></p><p class="cell new" role="cell" data-k="Operator"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="1.6" fill="none"/></svg><span>Fast on a weak cell signal</span></p></div><div class="vs-row" role="row"><h3 role="rowheader">AI search</h3><p class="cell today" role="cell" data-k="Typical agency site"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="1.6"/></svg><span>Not considered</span></p><p class="cell new" role="cell" data-k="Operator"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="1.6" fill="none"/></svg><span>Built in from day one</span></p></div><div class="vs-row" role="row"><h3 role="rowheader">Local SEO</h3><p class="cell today" role="cell" data-k="Typical agency site"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="1.6"/></svg><span>Generic page structure</span></p><p class="cell new" role="cell" data-k="Operator"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="1.6" fill="none"/></svg><span>Structured for local search and every service</span></p></div><div class="vs-row" role="row"><h3 role="rowheader">Phones</h3><p class="cell today" role="cell" data-k="Typical agency site"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="1.6"/></svg><span>A desktop layout squeezed down</span></p><p class="cell new" role="cell" data-k="Operator"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="1.6" fill="none"/></svg><span>Designed for the phone first</span></p></div><div class="vs-row" role="row"><h3 role="rowheader">Upkeep</h3><p class="cell today" role="cell" data-k="Typical agency site"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="1.6"/></svg><span>Plugin updates and security patches</span></p><p class="cell new" role="cell" data-k="Operator"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="1.6" fill="none"/></svg><span>No plugins to patch</span></p></div></div>
+    </div>
+  </section>
+
+  <section class="sec" id="working" aria-labelledby="op-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label"><span class="idx">04</span> · Working with Operator</p>
+        <h2 id="op-h">The hard part is done. You choose and refine.</h2>
+        <p class="sub">You see the finished design before you commit. The same team designs and builds it, so what you approve is what goes live on your domain.</p>
+      </div>
+      <div class="op">
+        <div>
+          <h3>How it works</h3>
+          <ol class="steps">
+            <li><span><b>Choose.</b> Pick a version, or a mix of them.</span></li>
+            <li><span><b>Fill in.</b> We confirm your 877 number, after-hours policy, Google rating and plan terms with you.</span></li>
+            <li><span><b>Refine.</b> Wording, colors and features until it feels like Izzy&#39;s.</span></li>
+            <li><span><b>Connect.</b> Forms go to your office, and your Google listing is linked.</span></li>
+            <li><span><b>Launch.</b> Live on izzysplumbing.com, checked on phone and computer.</span></li>
+            <li><span><b>Support.</b> The first two months after launch are included. Then choose care at $250 a month, or a full handoff.</span></li>
+          </ol>
+        </div>
+        <div>
+          <h3>What's included</h3>
+          <ul class="incl">
+            <li>The finished site in the version you pick, with features borrowed from the others</li>
+            <li>Service and estimate requests that reach the office</li>
+            <li>Built for phones first</li>
+            <li>Google and AI search setup</li>
+            <li>Navien, maintenance plan, service area and about sections</li>
+            <li>First 2 months of support after launch, included</li>
+          </ul>
+        </div>
+      </div>
+      <div class="care" aria-labelledby="care-h">
+        <p class="offer"><span class="label">Launch offer</span><span>10% off the build ($450 saved) and the first two months of support free. For our first clients only.</span></p>
+        <div class="care-head"><p class="label">Investment</p><h3 id="care-h">One clear price. Optional care after launch.</h3><p class="sub">Most customers look at a contractor’s website before they call. The new Izzy&#39;s site is designed to make that look easy: clear services, real proof and a simple way to reach you. One fixed price, no long contract, and you own everything.</p></div>
+        <ol class="care-tiers">
+          <li class="build"><span class="label">Website build</span><b><s>$4,500</s> $4,050</b><p>About 9 pages: home, plumbing and drains, heating and boilers, air conditioning, Navien water heaters and combi boilers, water treatment, about and our work, service area, and contact, with online booking.</p></li>
+          <li><span class="label">First 2 months</span><b>Included</b><p>Support after launch: bug fixes, launch help and small corrections.</p></li>
+          <li><span class="label">Optional care</span><b>$250 / month</b><p>From month three: hosting management, form and uptime checks, fixes and small text updates. Cancel any time.</p></li>
+          <li><span class="label">You own it</span><b>Yours</b><p>Prefer to run it yourself? After the first two months we hand over the site, its code and your domain. Hosting and domain are billed at cost in your own accounts.</p></li>
+        </ol>
+        <p class="care-foot">$2,025 to start and $2,025 before launch. If you keep care after the first two months, year one totals $6,550 ($4,050 plus ten months of care), plus hosting and domain at cost. New pages and larger changes are quoted before any work starts.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="pick" aria-labelledby="pick-h">
+    <div class="wrap pick">
+      <div class="side">
+        <p class="label"><span class="idx">05</span> · Your pick</p>
+        <h2 id="pick-h">Which one feels like Izzy&#39;s?</h2>
+        <p class="sub">Choose a favorite and tell us what you'd change. Nothing is final. Once you pick, we fill in the details with you and refine it until it's right.</p>
+        <p class="contact"><span class="label">Questions</span><span>Reply to the email this proposal came with, or send your pick here and we will follow up.</span></p>
+      </div>
+      <form id="pick-form" novalidate>
+        <fieldset>
+          <legend class="label">My favorite</legend>
+          <input class="choice-in" type="radio" name="pick" id="p-service" value="Service"><label class="choice" for="p-service"><span class="sw sw1" aria-hidden="true"></span><span><b>Service</b><small>The one-call service company</small></span></label>
+          <input class="choice-in" type="radio" name="pick" id="p-replacement" value="Replacement"><label class="choice" for="p-replacement"><span class="sw sw2" aria-hidden="true"></span><span><b>Replacement</b><small>The replacement specialist</small></span></label>
+          <input class="choice-in" type="radio" name="pick" id="p-family" value="Family"><label class="choice" for="p-family"><span class="sw sw3" aria-hidden="true"></span><span><b>Family</b><small>The family company</small></span></label>
+          <input class="choice-in" type="radio" name="pick" id="p-mix" value="A mix of these"><label class="choice" for="p-mix"><span class="sw swmix" aria-hidden="true"></span><span><b>A mix of these</b><small>Tell us what to combine</small></span></label>
+        </fieldset>
+        <div><label class="label" for="pick-note" style="display:block;margin-bottom:12px">What would you change or keep? (optional)</label><textarea id="pick-note" name="note" maxlength="4000" placeholder="For example: love Service, but add the Navien section from Replacement."></textarea></div>
+        <div class="who">
+          <div class="field field--full"><label class="label" for="pick-name">Your name</label><input id="pick-name" name="name" autocomplete="name" maxlength="120" required></div>
+          <div class="field"><label class="label" for="pick-email">Email</label><input id="pick-email" name="email" type="email" autocomplete="email" maxlength="200"></div>
+          <div class="field"><label class="label" for="pick-phone">Phone</label><input id="pick-phone" name="phone" type="tel" autocomplete="tel" maxlength="40"></div>
+          <p class="hint">An email or a phone number, so we can follow up.</p>
+          <div class="hp" aria-hidden="true"><label for="pick-hp">Leave this empty</label><input id="pick-hp" name="botcheck" tabindex="-1" autocomplete="off"></div>
+        </div>
+        <div class="form-foot">
+          <button class="btn btn--primary" type="submit" id="pick-send">Send my pick</button>
+          <p class="status" id="pick-status" role="status"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span class="brand"><svg width="18" height="18" viewBox="0 0 32 32" aria-hidden="true"><path d="M9 5 L23.5 16 L9 27 L9 20.4 L14.6 16 L9 11.6 Z" fill="currentColor"/></svg>OPERATOR</span>
+    <span>Preview for Izzy&#39;s Plumbing &amp; Heating. Nothing here is live yet.</span>
+  </div>
+</footer>
+
+<div class="full" id="full" role="dialog" aria-modal="true" aria-label="Full screen preview" hidden>
+  <div class="full-bar">
+    <div class="full-tabs" role="tablist" aria-label="Versions">
+      <button type="button" role="tab" data-k="service"><span class="sw sw1" aria-hidden="true"></span><span>Service</span></button>
+      <button type="button" role="tab" data-k="replacement"><span class="sw sw2" aria-hidden="true"></span><span>Replacement</span></button>
+      <button type="button" role="tab" data-k="family"><span class="sw sw3" aria-hidden="true"></span><span>Family</span></button>
+    </div>
+    <button type="button" class="full-close" id="full-close" aria-label="Close full screen"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.6"/></svg><span>Close</span></button>
+  </div>
+  <iframe id="f-full" title="Full screen preview"></iframe>
+</div>
+
+<nav class="dock" id="dock" aria-label="Switch version">
+  <button type="button" data-k="service" aria-selected="true"><span class="sw sw1" aria-hidden="true"></span><span>Service</span></button>
+  <button type="button" data-k="replacement" aria-selected="false"><span class="sw sw2" aria-hidden="true"></span><span>Replacement</span></button>
+  <button type="button" data-k="family" aria-selected="false"><span class="sw sw3" aria-hidden="true"></span><span>Family</span></button>
+</nav>
+
+<script>
+(function () {
+  var C = {"service": {"n": 1, "name": "Service", "file": "/izzys/concepts/service.html", "why": "For homeowners in Edison, Piscataway or Bridgewater with a leak, a clog, no hot water or a system that quit. Izzy's holds master plumbing, HVACR and HIC licenses, so one booking covers the whole house.", "pts": ["A six-step service request with a review screen", "Services grouped by the problem you have", "Call, text or book online from every page", "A town check for Middlesex and Somerset", "Real job photos and Google reviews"]}, "replacement": {"n": 2, "name": "Replacement", "file": "/izzys/concepts/replacement.html", "why": "For homeowners with an aging boiler, water heater, furnace or AC who are comparing installers. Izzy's is a certified Navien partner in Navien's own directory and gives free estimates on full heating and cooling installs.", "pts": ["A free estimate request with optional photo", "Tankless water heaters and combi boilers explained", "Each system with what the job includes", "Recent installs with the town they were in", "Master plumbing and HVACR licenses up front"]}, "family": {"n": 3, "name": "Family", "file": "/izzys/concepts/family.html", "why": "For homeowners who have been let down by another contractor and want to know who is coming to the door. Izzy trains and mentors every technician himself, Alyana runs the office, and the reviews say they are honest.", "pts": ["Izzy and Alyana's story", "The shop, the fleet and the crew", "Google reviews given room to read", "A town checker that starts a request", "Three NJ licenses and insurance"]}};
+  var mqPhone = window.matchMedia('(max-width: 760px)');
+  var cur = 'service', view = mqPhone.matches ? 'phone' : 'desk';
+  var $ = function (id) { return document.getElementById(id); };
+  var tabs = document.querySelectorAll('.opt'), dockBtns = document.querySelectorAll('#dock button');
+  var fDesk = $('f-desk'), fPhone = $('f-phone'), vp = $('vp');
+  // Computer view renders the site at a real desktop width and scales it down to fit, so it reads correctly even on a phone.
+  var DESK_W = 1280;
+  function fitDesk() {
+    var w = vp.clientWidth; if (!w) return;
+    var s = Math.min(1, w / DESK_W), frameW = s < 1 ? DESK_W : w;
+    var h = mqPhone.matches ? Math.round(Math.min(window.innerHeight * .6, 560)) : Math.round(Math.min(window.innerHeight * .78, 780));
+    fDesk.style.width = frameW + 'px'; fDesk.style.height = Math.round(h / s) + 'px';
+    fDesk.style.transform = s < 1 ? 'scale(' + s + ')' : 'none';
+    vp.style.height = h + 'px';
+  }
+  function render() {
+    var c = C[cur];
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', t.dataset.k === cur); });
+    dockBtns.forEach(function (t) { t.setAttribute('aria-selected', t.dataset.k === cur); });
+    $('viewer').setAttribute('aria-labelledby', 't-' + cur);
+    if (mqPhone.matches && view === 'trio') view = 'phone';
+    $('desk').hidden = view !== 'desk'; $('phone').hidden = view !== 'phone'; $('trio').hidden = view !== 'trio';
+    if (view === 'desk') { if (fDesk.getAttribute('src') !== c.file) { fDesk.src = c.file; fDesk.title = c.name + ', computer view'; } fitDesk(); }
+    if (view === 'phone' && fPhone.getAttribute('src') !== c.file) { fPhone.src = c.file; fPhone.title = c.name + ', phone view'; }
+    if (view === 'trio') document.querySelectorAll('#trio iframe[data-src]').forEach(function (f) { if (!f.getAttribute('src')) f.src = f.dataset.src; });
+    $('d-k').textContent = 'Version ' + c.n + ' of 3';
+    $('d-h').textContent = c.name;
+    $('d-why').textContent = c.why;
+    var ul = $('d-list'); ul.textContent = '';
+    c.pts.forEach(function (p) { var li = document.createElement('li'); li.textContent = p; ul.appendChild(li); });
+    document.querySelectorAll('.seg button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.v === view); });
+  }
+  function pick(k) { cur = k; if (view === 'trio') view = mqPhone.matches ? 'phone' : 'desk'; render(); }
+  tabs.forEach(function (t) { t.addEventListener('click', function () { pick(t.dataset.k); }); });
+  dockBtns.forEach(function (t) { t.addEventListener('click', function () {
+    pick(t.dataset.k);
+    var top = $('viewer').getBoundingClientRect().top + window.scrollY - 56 - 64;
+    if (Math.abs(window.scrollY - top) > 40) window.scrollTo({ top: top, behavior: 'smooth' });
+  }); });
+  document.querySelectorAll('.seg button').forEach(function (b) { b.addEventListener('click', function () { view = b.dataset.v; render(); }); });
+  try { var h = (location.hash || '').slice(1); if (C[h]) cur = h; } catch (e) {}
+  if (window.ResizeObserver) new ResizeObserver(function () { if (view === 'desk') fitDesk(); }).observe(vp);
+  var onMq = function (e) { if (e.matches && view === 'trio') view = 'phone'; render(); };
+  if (mqPhone.addEventListener) mqPhone.addEventListener('change', onMq); else if (mqPhone.addListener) mqPhone.addListener(onMq);
+  render();
+
+  // Full screen: opens the current version in a layer over the whole page.
+  var full = $('full'), fFull = $('f-full'), fullTabs = full.querySelectorAll('.full-tabs button'), lastFocus = null;
+  function showFull(k) {
+    var c = C[k]; cur = k;
+    fullTabs.forEach(function (t) { t.setAttribute('aria-selected', t.dataset.k === k); });
+    if (fFull.getAttribute('src') !== c.file) { fFull.src = c.file; fFull.title = c.name + ', full screen'; }
+  }
+  function openFull() {
+    lastFocus = document.activeElement; showFull(cur);
+    full.hidden = false; document.body.classList.add('full-on'); $('full-close').focus();
+  }
+  function closeFull() {
+    full.hidden = true; document.body.classList.remove('full-on'); render();
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  $('open').addEventListener('click', openFull);
+  $('full-close').addEventListener('click', closeFull);
+  fullTabs.forEach(function (t) { t.addEventListener('click', function () { showFull(t.dataset.k); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !full.hidden) closeFull(); });
+
+  // Phone dock: shown while the preview is on screen.
+  var dock = $('dock');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { es.forEach(function (e) { dock.classList.toggle('on', e.isIntersecting); }); }, { rootMargin: '-35% 0px -35% 0px' }).observe($('preview'));
+  }
+
+  // Pick. On Operator's site it posts to /api/proposal, which files a row in
+  // Notion and emails Operator. Inside a claude.ai preview it saves to the
+  // artifact's database instead (team members only).
+  var form = $('pick-form'), status = $('pick-status'), send = $('pick-send');
+  var CLIENT = 'izzys', started = Date.now();
+  var hosted = /(^|\.)mattsilverman\.xyz$|\.pages\.dev$|^localhost$|^127\.0\.0\.1$/.test(location.hostname);
+  var store = null;
+  function say(msg, ok) { status.className = 'status' + (ok ? ' ok' : ''); status.textContent = msg; }
+  if (!hosted) (async function () {
+    try {
+      if (!window.claude || !window.claude.use) return;
+      var db = await window.claude.use('db'), user = await window.claude.use('user');
+      if (!db || !user) return;
+      var id = await user.id(); if (!id) return;
+      store = db.doc('picks/' + id);
+      var snap = await store.get();
+      if (snap.exists) {
+        var d = snap.data();
+        var r = document.querySelector('input[name="pick"][value="' + (d.pick || '').replace(/"/g, '') + '"]'); if (r) r.checked = true;
+        ['note', 'name', 'email', 'phone'].forEach(function (k) { if (d[k]) $('pick-' + k).value = d[k]; });
+        say('Your pick is saved: ' + d.pick + '. You can change it anytime.', true);
+      }
+    } catch (e) { store = null; }
+  })();
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var r = form.querySelector('input[name="pick"]:checked');
+    var v = { client: CLIENT, pick: r ? r.value : '', note: $('pick-note').value.trim(), name: $('pick-name').value.trim(),
+      email: $('pick-email').value.trim(), phone: $('pick-phone').value.trim(), botcheck: $('pick-hp').value, elapsed: Date.now() - started };
+    ['name', 'email', 'phone'].forEach(function (k) { $('pick-' + k).removeAttribute('aria-invalid'); });
+    if (!v.pick) return say('Choose a version first.');
+    if (!v.name) { $('pick-name').setAttribute('aria-invalid', 'true'); $('pick-name').focus(); return say('Add your name so we know who it\'s from.'); }
+    if (v.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) { $('pick-email').setAttribute('aria-invalid', 'true'); $('pick-email').focus(); return say('That email doesn\'t look right.'); }
+    if (!v.email && !v.phone) { $('pick-email').setAttribute('aria-invalid', 'true'); $('pick-email').focus(); return say('Add an email or a phone number so we can follow up.'); }
+    send.disabled = true; say('Sending…');
+    try {
+      if (hosted) {
+        var res = await fetch('/api/proposal', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(v) });
+        if (!res.ok) throw new Error(String(res.status));
+      } else if (store) {
+        await store.set({ pick: v.pick, note: v.note.slice(0, 4000), name: v.name, email: v.email, phone: v.phone, at: new Date().toISOString() });
+      } else {
+        throw new Error('no channel');
+      }
+      say('Thanks, ' + v.name.split(/\s+/)[0] + '. We got your pick: ' + v.pick + '. We\'ll be in touch about next steps.', true);
+    } catch (err) {
+      say('That didn\'t send. Please reply to the email this proposal came with and include your pick.');
+    } finally { send.disabled = false; }
+  });
+})();
+</script>
+
+</body>
+</html>
